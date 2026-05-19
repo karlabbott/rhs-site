@@ -39,6 +39,63 @@
             text-align: center;
         }
 
+        /* ── Terminal Animation ── */
+        .terminal {
+            background: #0a0e14;
+            border: 1px solid #30363d;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            font-family: 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+            text-align: left;
+        }
+
+        .terminal-bar {
+            background: #202020;
+            padding: 0;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .tab { display: flex; align-items: center; gap: 6px; background: #323232; border: 1px solid #464646; border-radius: 6px 6px 0 0; padding: 4px 12px; margin: 4px 0 0 10px; height: 32px; }
+        .tab img { width: 14px; height: 14px; }
+        .tab-title { font-size: 11px; color: #ccc; font-family: 'Segoe UI', system-ui, sans-serif; }
+        .win-controls { display: flex; height: 36px; }
+        .win-btn { width: 40px; height: 36px; display: flex; align-items: center; justify-content: center; }
+        .win-btn svg { width: 9px; height: 9px; fill: none; stroke: #999; stroke-width: 1.2; }
+
+        .terminal-body {
+            padding: 0.8rem 1rem;
+            font-size: 0.78rem;
+            line-height: 1.6;
+            height: 150px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            color: #c9d1d9;
+            scroll-behavior: smooth;
+        }
+
+        .terminal-body::-webkit-scrollbar { display: none; }
+        .terminal-body { -ms-overflow-style: none; scrollbar-width: none; }
+
+        .terminal-body .prompt { color: #7ee787; }
+        .terminal-body .copilot-prompt { color: #58a6ff; }
+        .terminal-body .spinner { color: #f0883e; }
+        .terminal-body .success { color: #7ee787; }
+        .terminal-body .url { color: #58a6ff; text-decoration: underline; }
+        .terminal-body .dim { color: #6e7681; }
+
+        .cursor {
+            color: #58a6ff;
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
         .badge {
             display: inline-block;
             background: linear-gradient(135deg, #ee0000, #a30000);
@@ -134,6 +191,17 @@
 </head>
 <body>
     <div class="wrapper">
+        <div class="terminal">
+            <div class="terminal-bar">
+                <div class="tab"><img src="copilot-logo.png"><span class="tab-title">Copilot</span></div>
+                <div class="win-controls"><div class="win-btn"><svg viewBox="0 0 10 1"><line x1="0" y1="0.5" x2="10" y2="0.5"/></svg></div><div class="win-btn"><svg viewBox="0 0 10 10"><rect x="0.5" y="0.5" width="9" height="9"/></svg></div><div class="win-btn win-close"><svg viewBox="0 0 10 10"><line x1="0" y1="0" x2="10" y2="10"/><line x1="10" y1="0" x2="0" y2="10"/></svg></div></div>
+            </div>
+            <div class="terminal-body">
+                <div id="terminal-text"></div>
+                <span class="cursor">&#9610;</span>
+            </div>
+        </div>
+
         <div class="badge">Red Hat Summit 2026</div>
 
         <h1>Modern RHEL Operations on Azure</h1>
@@ -147,15 +215,85 @@
             </div>
         </div>
 
-        <a href="https://summit.99b.org" class="cta">Experience the Talk →</a>
+        <a href="https://summit.99b.org" class="cta">Experience the Talk &#8594;</a>
 
         <div class="links">
             <a href="https://summit.99b.org/2026/walkthrough.html">Interactive Walkthrough</a>
-            <span class="sep">·</span>
+            <span class="sep">&middot;</span>
             <a href="https://events.experiences.redhat.com/widget/redhat/sum26/SessionCatalog2026/session/1773071682169001XKzb" target="_blank">Summit Session</a>
-            <span class="sep">·</span>
+            <span class="sep">&middot;</span>
             <a href="https://github.com/karlabbott/conference-bingo" target="_blank">GitHub</a>
         </div>
     </div>
+
+    <script>
+        const termEl = document.getElementById('terminal-text');
+        const lines = [
+            { text: '$ copilot', cls: 'prompt', typeSpeed: 80 },
+            { text: '', pause: 600 },
+            { text: '> Deploy my Conference Bingo game from GitHub to summit.99b.org.', cls: 'copilot-prompt', typeSpeed: 40 },
+            { text: '  Create two RHEL 10 VMs with Azure Hybrid Benefit...', cls: 'copilot-prompt', typeSpeed: 35 },
+            { text: '', pause: 800 },
+            { text: '\u280B Creating resource group "bingo"...', cls: 'spinner', instant: false, typeSpeed: 20 },
+            { text: '\u2713 bingo-vnet created (10.0.0.0/16)', cls: 'success', instant: true, pause: 500 },
+            { text: '\u2713 bingo-db VM provisioned \u2014 RHEL 10.1', cls: 'success', instant: true, pause: 400 },
+            { text: '\u2713 bingo-app VM provisioned \u2014 RHEL 10.1', cls: 'success', instant: true, pause: 400 },
+            { text: '', pause: 500 },
+            { text: '\u280B SSH into bingo-db... installing postgresql-server', cls: 'spinner', instant: true, pause: 700 },
+            { text: '\u2713 PostgreSQL configured, database seeded', cls: 'success', instant: true, pause: 500 },
+            { text: '\u280B SSH into bingo-app... dnf install nginx python3-pip git gcc', cls: 'spinner', instant: true, pause: 700 },
+            { text: '\u2713 SELinux: setsebool -P httpd_can_network_connect on', cls: 'success', instant: true, pause: 400 },
+            { text: '\u2713 TLS certificate issued for summit.99b.org', cls: 'success', instant: true, pause: 400 },
+            { text: '', pause: 600 },
+            { text: '\u2713 App live at https://summit.99b.org', cls: 'success url', instant: true, pause: 2000 },
+            { text: '', pause: 800 },
+            { text: '# 40 people watched this happen live. No scripts. No do-overs.', cls: 'dim', instant: false, typeSpeed: 40, pause: 2000 },
+            { text: '# Now you can experience the whole thing \u2014 summit.99b.org', cls: 'dim', instant: false, typeSpeed: 40 },
+        ];
+
+        async function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+        async function typeLine(text, cls, speed) {
+            const span = document.createElement('span');
+            span.className = cls || '';
+            termEl.appendChild(span);
+            const body = termEl.parentElement;
+            for (let i = 0; i < text.length; i++) {
+                span.textContent += text[i];
+                body.scrollTop = body.scrollHeight;
+                await sleep(speed || 30);
+            }
+            termEl.appendChild(document.createElement('br'));
+            body.scrollTop = body.scrollHeight;
+        }
+
+        async function showLine(text, cls) {
+            const span = document.createElement('span');
+            span.className = cls || '';
+            span.textContent = text;
+            termEl.appendChild(span);
+            termEl.appendChild(document.createElement('br'));
+            const body = termEl.parentElement;
+            body.scrollTop = body.scrollHeight;
+        }
+
+        async function runTerminal() {
+            termEl.innerHTML = '';
+            for (const line of lines) {
+                if (line.text === '') {
+                    await sleep(line.pause || 300);
+                    continue;
+                }
+                if (line.instant) {
+                    await showLine(line.text, line.cls);
+                } else {
+                    await typeLine(line.text, line.cls, line.typeSpeed);
+                }
+                if (line.pause) await sleep(line.pause);
+            }
+        }
+
+        runTerminal();
+    </script>
 </body>
 </html>
