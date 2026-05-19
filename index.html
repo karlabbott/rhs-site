@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conference Bingo — Red Hat Summit 2026</title>
-    <meta name="description" content="Microsoft for Red Hat Teams: Modern RHEL Operations on Azure with Copilot. Live at Red Hat Summit, May 12.">
-    <meta property="og:title" content="Conference Bingo — Red Hat Summit 2026">
-    <meta property="og:description" content="Watch an AI agent deploy a live app to RHEL 10 on Azure. Then play bingo on your phone.">
+    <title>Modern RHEL Operations on Azure — Red Hat Summit 2026</title>
+    <meta name="description" content="Interactive walkthrough of the live demo: GitHub Copilot deploys a full-stack app to RHEL 10 on Azure. Audio narration, demo videos, and the prompts to try it yourself.">
+    <meta property="og:title" content="Modern RHEL Operations on Azure — Red Hat Summit 2026">
+    <meta property="og:description" content="Interactive walkthrough of the live demo: GitHub Copilot deploys a full-stack app to RHEL 10 on Azure. Audio narration, demo videos, and the prompts to try it yourself.">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://rhs.99b.org/og-image.png">
     <meta property="og:url" content="https://rhs.99b.org">
@@ -27,106 +27,16 @@
             background: #0d1117;
             color: #e6edf3;
             min-height: 100vh;
-        }
-
-        .wrapper {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 2rem 3rem;
-            min-height: 100vh;
             display: flex;
-            flex-direction: column;
+            align-items: center;
             justify-content: center;
         }
 
-        /* ── Logo Bar ── */
-        .logo-bar {
+        .wrapper {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
             text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .logo-bar img {
-            height: 48px;
-            width: auto;
-        }
-
-        /* ── Two Column Grid ── */
-        .columns {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: start;
-        }
-
-        /* ── Left Column ── */
-        .left {
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* ── Terminal Animation ── */
-        .terminal {
-            background: #0a0e14;
-            border: 1px solid #30363d;
-            border-radius: 10px;
-            overflow: hidden;
-            margin-bottom: 1.2rem;
-            font-family: 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
-        }
-
-        .terminal-bar {
-            background: #202020;
-            padding: 0;
-            height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .tab { display: flex; align-items: center; gap: 6px; background: #323232; border: 1px solid #464646; border-radius: 6px 6px 0 0; padding: 4px 12px; margin: 4px 0 0 10px; height: 32px; }
-        .tab img { width: 14px; height: 14px; }
-        .tab-title { font-size: 11px; color: #ccc; font-family: 'Segoe UI', system-ui, sans-serif; }
-        .win-controls { display: flex; height: 36px; }
-        .win-btn { width: 40px; height: 36px; display: flex; align-items: center; justify-content: center; }
-        .win-btn svg { width: 9px; height: 9px; fill: none; stroke: #999; stroke-width: 1.2; }
-
-        .terminal-body {
-            padding: 0.8rem 1rem;
-            font-size: 0.78rem;
-            line-height: 1.6;
-            height: 130px;
-            overflow-y: auto;
-            overflow-x: hidden;
-            color: #c9d1d9;
-            scroll-behavior: smooth;
-        }
-
-        .terminal-body::-webkit-scrollbar { display: none; }
-        .terminal-body { -ms-overflow-style: none; scrollbar-width: none; }
-
-        .terminal-body .prompt { color: #7ee787; }
-        .terminal-body .copilot-prompt { color: #58a6ff; }
-        .terminal-body .spinner { color: #f0883e; }
-        .terminal-body .success { color: #7ee787; }
-        .terminal-body .url { color: #58a6ff; text-decoration: underline; }
-        .terminal-body .dim { color: #6e7681; }
-
-        .cursor {
-            color: #58a6ff;
-            animation: blink 1s step-end infinite;
-        }
-
-        @keyframes blink {
-            50% { opacity: 0; }
-        }
-
-        /* ── Badge Row ── */
-        .badge-row {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
         }
 
         .badge {
@@ -139,31 +49,14 @@
             font-weight: 600;
             letter-spacing: 0.05em;
             text-transform: uppercase;
-        }
-
-        .cal-pill {
-            display: inline-block;
-            background: #161b22;
-            border: 1px solid #30363d;
-            color: #c9d1d9;
-            padding: 0.35rem 0.9rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.2s ease;
-        }
-
-        .cal-pill:hover {
-            border-color: #58a6ff;
-            color: #58a6ff;
+            margin-bottom: 1.5rem;
         }
 
         h1 {
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-weight: 700;
-            line-height: 1.15;
-            margin-bottom: 0.5rem;
+            line-height: 1.2;
+            margin-bottom: 0.6rem;
             background: linear-gradient(135deg, #58a6ff, #79c0ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -171,431 +64,98 @@
 
         .subtitle {
             font-size: 1rem;
-            color: #c9d1d9;
-            margin-bottom: 1.2rem;
+            color: #8b949e;
+            margin-bottom: 2rem;
             line-height: 1.5;
         }
 
-        .pitch p {
-            font-size: 0.92rem;
-            line-height: 1.65;
-            color: #c9d1d9;
-            margin-bottom: 0.7rem;
-        }
-
-        .pitch em {
-            color: #58a6ff;
-            font-style: normal;
-        }
-
-        .pitch strong {
-            color: #f0883e;
-            font-size: 1.02rem;
-        }
-
-        .countdown {
-            display: flex;
-            gap: 0.6rem;
-            margin: 1.2rem 0;
-        }
-
-        .countdown-unit {
-            background: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 10px;
-            padding: 0.5rem 0.8rem;
-            min-width: 62px;
-            text-align: center;
-        }
-
-        .countdown-unit .number {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #58a6ff;
-            display: block;
-        }
-
-        .countdown-unit .label {
-            font-size: 0.6rem;
-            color: #8b949e;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .speaker-row {
+        .speaker {
             display: flex;
             align-items: center;
             gap: 1rem;
-            margin-top: 1.2rem;
+            justify-content: center;
+            margin-bottom: 2.5rem;
         }
 
         .headshot {
-            width: 72px;
-            height: 72px;
+            width: 56px;
+            height: 56px;
             border-radius: 50%;
             object-fit: cover;
             border: 2px solid #30363d;
         }
 
-        .speaker-info {
-            font-size: 0.85rem;
-            color: #8b949e;
-        }
-
-        .speaker-info strong {
-            color: #e6edf3;
-            display: block;
-            font-size: 0.95rem;
-        }
-
-        .speaker-bio {
-            color: #58a6ff;
-            font-style: italic;
-            font-size: 0.8rem;
-        }
-
-        /* ── Right Column ── */
-        .right {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .talk-title h2 {
-            font-size: 1rem;
-            font-weight: 600;
-            color: #e6edf3;
+        .speaker-text {
+            text-align: left;
+            font-size: 0.9rem;
             line-height: 1.4;
-            margin-bottom: 0.3rem;
         }
 
-        .summit-link {
-            font-size: 0.8rem;
+        .speaker-text strong { color: #e6edf3; }
+        .speaker-text span { color: #8b949e; }
+
+        .cta {
+            display: inline-block;
+            background: linear-gradient(135deg, #58a6ff, #388bfd);
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 0.85rem 2.2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+            margin-bottom: 1.2rem;
+        }
+
+        .cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(88, 166, 255, 0.3);
+        }
+
+        .links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+        }
+
+        .links a {
             color: #58a6ff;
             text-decoration: none;
-            font-weight: 500;
+            font-size: 0.85rem;
+            transition: color 0.15s;
         }
 
-        .summit-link:hover {
-            text-decoration: underline;
-        }
+        .links a:hover { color: #79c0ff; }
 
-        .details {
-            background: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 12px;
-            padding: 1.3rem;
-        }
-
-        .detail-row {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.5rem;
-            margin-bottom: 0.7rem;
-        }
-
-        .detail-row:last-child { margin-bottom: 0; }
-
-        .detail-icon {
-            font-size: 1rem;
-            flex-shrink: 0;
-            width: 22px;
-            text-align: center;
-        }
-
-        .detail-text {
-            font-size: 0.82rem;
-            line-height: 1.45;
-        }
-
-        .detail-text strong { color: #e6edf3; }
-        .detail-text span { color: #8b949e; }
-
-        .bingo-preview h2 {
-            font-size: 0.7rem;
-            color: #8b949e;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 0.6rem;
-            text-align: center;
-        }
-
-        .bingo-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 0.35rem;
-        }
-
-        .bingo-square {
-            background: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 6px;
-            padding: 0.5rem 0.4rem;
-            font-size: 0.7rem;
-            text-align: center;
-            color: #c9d1d9;
-            transition: all 0.3s ease;
-        }
-
-        .bingo-square:hover {
-            border-color: #58a6ff;
-            transform: translateY(-2px);
-        }
-
-        .bingo-square.highlight {
-            border-color: #58a6ff;
-            box-shadow: 0 0 12px rgba(88, 166, 255, 0.1);
-        }
-
-        .live-badge {
-            display: none;
-            background: #da3633;
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            animation: pulse 2s infinite;
-        }
-
-        .live-badge.active { display: inline-block; }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.6; }
-        }
-
-        /* ── Mobile ── */
-        @media (max-width: 768px) {
-            .wrapper { padding: 1.5rem; }
-            .columns {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            h1 { font-size: 1.6rem; }
-            .logo-bar img { height: 36px; }
-        }
+        .sep { color: #30363d; }
     </style>
 </head>
 <body>
     <div class="wrapper">
-        <div class="logo-bar">
-            <img src="partner-logo.svg" alt="Red Hat and Microsoft">
+        <div class="badge">Red Hat Summit 2026</div>
+
+        <h1>Modern RHEL Operations on Azure</h1>
+        <p class="subtitle">An Agentic Copilot&#8209;Driven Approach</p>
+
+        <div class="speaker">
+            <img src="karl.jpeg" alt="Karl Abbott" class="headshot">
+            <div class="speaker-text">
+                <strong>Karl Abbott</strong><br>
+                <span>Product Manager, Microsoft<br>16 years at Red Hat. Now at Microsoft. Still arguing with SELinux.</span>
+            </div>
         </div>
 
-        <div class="columns">
-            <!-- Left Column -->
-            <div class="left">
-                <div class="terminal">
-                    <div class="terminal-bar">
-                        <div class="tab"><img src="copilot-logo.png"><span class="tab-title">Copilot</span></div>
-                        <div class="win-controls"><div class="win-btn"><svg viewBox="0 0 10 1"><line x1="0" y1="0.5" x2="10" y2="0.5"/></svg></div><div class="win-btn"><svg viewBox="0 0 10 10"><rect x="0.5" y="0.5" width="9" height="9"/></svg></div><div class="win-btn win-close"><svg viewBox="0 0 10 10"><line x1="0" y1="0" x2="10" y2="10"/><line x1="10" y1="0" x2="0" y2="10"/></svg></div></div>
-                    </div>
-                    <div class="terminal-body">
-                        <div id="terminal-text"></div>
-                        <span class="cursor">▊</span>
-                    </div>
-                </div>
+        <a href="https://summit.99b.org" class="cta">Experience the Talk →</a>
 
-                <div class="badge-row">
-                    <div class="badge">Red Hat Summit 2026 &bull; Live Demo</div>
-                    <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0AVERSION%3A2.0%0ABEGIN%3AVEVENT%0ADTSTART%3A20260512T193000Z%0ADTEND%3A20260512T201000Z%0ASUMMARY%3AModern%20RHEL%20Operations%20on%20Azure%20with%20Copilot%0ALOCATION%3ARoom%20B404%2C%20Level%204%20%E2%80%94%20Red%20Hat%20Summit%202026%0ADESCRIPTION%3ALive%20agentic%20AI%20demo%3A%20deploying%20to%20RHEL%2010%20on%20Azure%20with%20GitHub%20Copilot.%20Play%20Conference%20Bingo%20on%20your%20phone!%20rhs.99b.org%0AEND%3AVEVENT%0AEND%3AVCALENDAR" download="rhel-copilot-summit.ics" class="cal-pill">📅 Add to Calendar</a>
-                </div>
-                <h1>One prompt. Two blank VMs. A live app&nbsp;in&nbsp;minutes.</h1>
-                <p class="subtitle">Watch an AI agent deploy a full-stack application to RHEL&nbsp;10 on Azure — live on stage, no scripts, no safety net.</p>
-
-                <div class="pitch">
-                    <p>A single natural-language prompt. GitHub Copilot SSHs into two fresh RHEL&nbsp;10 VMs and does <em>everything</em> — PostgreSQL, nginx, SELinux, firewalld, TLS — while you watch.</p>
-                    <p>Then the audience plays the app. Then we break it. Then we ask Copilot to fix&nbsp;it.</p>
-                    <p><strong>What could possibly go wrong?</strong></p>
-                    <p style="margin-top: 1rem; color: #8b949e; font-size: 0.95rem;">No roadmap slides. No platform pitch. Just a terminal and a conversation.</p>
-                </div>
-
-                <div class="countdown" id="countdown">
-                    <div class="countdown-unit">
-                        <span class="number" id="days">--</span>
-                        <span class="label">Days</span>
-                    </div>
-                    <div class="countdown-unit">
-                        <span class="number" id="hours">--</span>
-                        <span class="label">Hours</span>
-                    </div>
-                    <div class="countdown-unit">
-                        <span class="number" id="minutes">--</span>
-                        <span class="label">Minutes</span>
-                    </div>
-                    <div class="countdown-unit">
-                        <span class="number" id="seconds">--</span>
-                        <span class="label">Seconds</span>
-                    </div>
-                </div>
-
-                <div class="speaker-row">
-                    <img src="karl.jpeg" alt="Karl Abbott" class="headshot">
-                    <div class="speaker-info">
-                        <strong>Karl Abbott</strong>
-                        Product Manager, Microsoft<br>
-                        <span class="speaker-bio">16 years at Red Hat. Now at Microsoft. Still arguing with SELinux.</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Right Column -->
-            <div class="right">
-                <div class="talk-title">
-                    <h2>Microsoft for Red Hat Teams: Modern RHEL Operations on Azure with Copilot</h2>
-                    <a href="https://events.experiences.redhat.com/widget/redhat/sum26/SessionCatalog2026/session/1773071682169001XKzb" target="_blank" class="summit-link">View session at Red Hat Summit 2026 →</a>
-                </div>
-
-                <div class="details">
-                    <div class="detail-row">
-                        <span class="detail-icon">📅</span>
-                        <div class="detail-text">
-                            <strong>Tuesday, May 12 &bull; 3:30 &ndash; 4:10 PM EDT</strong><br>
-                            <span>Room B404, Level 4</span>
-                        </div>
-                    </div>
-                    <div class="detail-row">
-                        <span class="detail-icon">🤖</span>
-                        <div class="detail-text">
-                            <strong>Live from zero:</strong> <span>GitHub Copilot deploys a <a href="https://github.com/karlabbott/conference-bingo" target="_blank" style="color:#58a6ff;text-decoration:none;">full-stack app</a> to RHEL&nbsp;10 on Azure — networking, PostgreSQL, SELinux, firewalld, TLS — no pre-baked scripts, no do-overs</span>
-                        </div>
-                    </div>
-                    <div class="detail-row">
-                        <span class="detail-icon">🎯</span>
-                        <div class="detail-text">
-                            <strong>Play along:</strong> <span>The app is Conference Bingo. Pull out your phone, spot things like <em>"SELinux is mentioned"</em> and <em>"A live demo actually works"</em>, and try to win</span>
-                        </div>
-                    </div>
-                    <div class="detail-row">
-                        <span class="detail-icon">📊</span>
-                        <div class="detail-text">
-                            <strong>Observability in minutes:</strong> <span>Ansible wires up Azure Monitor, Log Analytics, and Managed Grafana — built with Copilot, codified for repeatability</span>
-                        </div>
-                    </div>
-                    <div class="detail-row">
-                        <span class="detail-icon">🔥</span>
-                        <div class="detail-text">
-                            <strong>Live troubleshooting:</strong> <span>When things go sideways in production, can Copilot figure out why? We'll find out.</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bingo-preview">
-                    <h2>A taste of what's on the card</h2>
-                    <div class="bingo-grid">
-                        <div class="bingo-square highlight">SELinux is mentioned</div>
-                        <div class="bingo-square">Copilot writes a bash script</div>
-                        <div class="bingo-square highlight">A live demo actually works</div>
-                        <div class="bingo-square">Someone says "agentic"</div>
-                        <div class="bingo-square highlight">firewall-cmd appears</div>
-                        <div class="bingo-square">Copilot fixes its own mistake</div>
-                        <div class="bingo-square">dnf install something</div>
-                        <div class="bingo-square highlight">systemctl restart</div>
-                        <div class="bingo-square">The speaker checks his phone</div>
-                    </div>
-                </div>
-
-            </div>
+        <div class="links">
+            <a href="https://summit.99b.org/2026/walkthrough.html">Interactive Walkthrough</a>
+            <span class="sep">·</span>
+            <a href="https://events.experiences.redhat.com/widget/redhat/sum26/SessionCatalog2026/session/1773071682169001XKzb" target="_blank">Summit Session</a>
+            <span class="sep">·</span>
+            <a href="https://github.com/karlabbott/conference-bingo" target="_blank">GitHub</a>
         </div>
     </div>
-
-    <script>
-        const target = new Date('2026-05-12T19:30:00Z');
-        const appUrl = 'https://summit.99b.org';
-
-        function updateCountdown() {
-            const now = new Date();
-            const diff = target - now;
-
-            if (diff <= 0) {
-                document.getElementById('countdown').innerHTML =
-                    '<span class="live-badge">✅ THIS SESSION HAS ENDED</span><br><span style="color:#8b949e;font-size:0.9rem;">Thanks to everyone who attended. Demo videos coming soon.</span>';
-                return;
-            }
-
-            const d = Math.floor(diff / 86400000);
-            const h = Math.floor((diff % 86400000) / 3600000);
-            const m = Math.floor((diff % 3600000) / 60000);
-            const s = Math.floor((diff % 60000) / 1000);
-
-            document.getElementById('days').textContent = d;
-            document.getElementById('hours').textContent = h;
-            document.getElementById('minutes').textContent = m;
-            document.getElementById('seconds').textContent = s;
-        }
-
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
-
-        // Terminal typing animation
-        const termEl = document.getElementById('terminal-text');
-        const lines = [
-            { text: '$ copilot', cls: 'prompt', typeSpeed: 80 },
-            { text: '', pause: 600 },
-            { text: '> Deploy my Conference Bingo game from GitHub to summit.99b.org.', cls: 'copilot-prompt', typeSpeed: 40 },
-            { text: '  Create two RHEL 10 VMs with Azure Hybrid Benefit...', cls: 'copilot-prompt', typeSpeed: 35 },
-            { text: '', pause: 800 },
-            { text: '⠋ Creating resource group "bingo"...', cls: 'spinner', instant: false, typeSpeed: 20 },
-            { text: '✓ bingo-vnet created (10.0.0.0/16)', cls: 'success', instant: true, pause: 500 },
-            { text: '✓ bingo-db VM provisioned — RHEL 10.1', cls: 'success', instant: true, pause: 400 },
-            { text: '✓ bingo-app VM provisioned — RHEL 10.1', cls: 'success', instant: true, pause: 400 },
-            { text: '', pause: 500 },
-            { text: '⠋ SSH into bingo-db... installing postgresql-server', cls: 'spinner', instant: true, pause: 700 },
-            { text: '✓ PostgreSQL configured, database seeded', cls: 'success', instant: true, pause: 500 },
-            { text: '⠋ SSH into bingo-app... dnf install nginx python3-pip git gcc', cls: 'spinner', instant: true, pause: 700 },
-            { text: '✓ SELinux: setsebool -P httpd_can_network_connect on', cls: 'success', instant: true, pause: 400 },
-            { text: '✓ TLS certificate issued for summit.99b.org', cls: 'success', instant: true, pause: 400 },
-            { text: '', pause: 600 },
-            { text: '✓ App live at https://summit.99b.org', cls: 'success url', instant: true, pause: 2000 },
-            { text: '', pause: 800 },
-            { text: '# This was the trailer. The live demo has SELinux errors.', cls: 'dim', instant: false, typeSpeed: 40, pause: 2000 },
-            { text: '# Want to see it for real? Room B404. May 12. 3:30 PM.', cls: 'dim', instant: false, typeSpeed: 40 },
-        ];
-
-        async function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
-
-        async function typeLine(text, cls, speed) {
-            const span = document.createElement('span');
-            span.className = cls || '';
-            termEl.appendChild(span);
-            const body = termEl.parentElement;
-            for (let i = 0; i < text.length; i++) {
-                span.textContent += text[i];
-                body.scrollTop = body.scrollHeight;
-                await sleep(speed || 30);
-            }
-            termEl.appendChild(document.createElement('br'));
-            body.scrollTop = body.scrollHeight;
-        }
-
-        async function showLine(text, cls) {
-            const span = document.createElement('span');
-            span.className = cls || '';
-            span.textContent = text;
-            termEl.appendChild(span);
-            termEl.appendChild(document.createElement('br'));
-            const body = termEl.parentElement;
-            body.scrollTop = body.scrollHeight;
-        }
-
-        async function runTerminal() {
-            termEl.innerHTML = '';
-            for (const line of lines) {
-                if (line.text === '') {
-                    await sleep(line.pause || 300);
-                    continue;
-                }
-                if (line.instant) {
-                    await showLine(line.text, line.cls);
-                } else {
-                    await typeLine(line.text, line.cls, line.typeSpeed);
-                }
-                if (line.pause) await sleep(line.pause);
-            }
-        }
-
-        runTerminal();
-    </script>
 </body>
 </html>
